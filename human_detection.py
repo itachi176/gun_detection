@@ -49,12 +49,13 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 # # and release the output
 # out.release()
 # finally, close the window
-frame = cv2.imread("./image/a.jpg", 0)
+frame = cv2.imread("./image/test.png", 0)
 frame = cv2.resize(frame, (640, 480))
 boxes, weights = hog.detectMultiScale(frame, winStride=(8,8) )
 boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])
 for (xA, yA, xB, yB) in boxes:
         # display the detected boxes in the colour picture
     cv2.rectangle(frame, (xA, yA), (xB, yB),(0, 255, 0), 2)
+
 cv2.imshow("anh", frame)
 cv2.waitKey()
